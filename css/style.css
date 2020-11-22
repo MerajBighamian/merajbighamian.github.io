@@ -1,28 +1,7 @@
-/*
-
-Elegance Template
-
-https://templatemo.com/tm-528-elegance
-
-==================================================
-CSS SITEMAP >>>>
-
-  01. GENERAL CSS
-  02. HEADER CSS
-  03. SOCIAL ICONS CSS
-  04. WELCOME BLOCK CSS
-  05. ABOUT BLOCK CSS
-  06. SERVICES BLOCK CSS
-  07. WORK BLOCK CSS
-  08. CONTACT BLOCK CSS
-  09. TESTIMONOALS BLOCK CSS
-  10. SKILLS BLOCK CSS
 
 
-==================================================*/
 
-/*==============================================
-01. GENERAL CSS
+GENERAL CSS
 ================================================*/
 
 html,
@@ -770,7 +749,7 @@ textarea.form-control {
 }
 
 /*==============================================
-09. TESTIMONOALS BLOCK CSS
+TESTIMONOALS BLOCK CSS
 ================================================*/
 .testimonials-section .item {
   background-color: rgba(250,250,250,0.25);
