@@ -1,366 +1,422 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>معراج و نجات شاهزاده سنا</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;touch-action:none;user-select:none;-webkit-user-select:none}
+body{background:radial-gradient(ellipse at center,#1a0b2e,#000);font-family:Tahoma,sans-serif;overflow:hidden;display:flex;justify-content:center;align-items:center;min-height:100vh;min-height:100dvh;color:#fff;position:fixed;width:100%}
+#gc{position:relative;width:100%;max-width:1280px;box-shadow:0 0 60px #8a5cff;overflow:hidden}
+canvas{display:block;background:#000;width:100%;height:auto}
+#hud{position:absolute;top:8px;left:8px;right:8px;display:flex;justify-content:space-between;font-size:14px;text-shadow:0 0 6px #000;pointer-events:none;z-index:10}
+.hb{background:linear-gradient(135deg,#2a1055cc,#5c2cff55);border:2px solid #ffd700;padding:6px 12px;border-radius:10px;box-shadow:0 0 10px #8a5cff88}
+#ov{position:absolute;inset:0;background:radial-gradient(ellipse,#1a0b2eee,#000f);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:20px;z-index:100;overflow-y:auto}
+#ov h1{font-size:34px;background:linear-gradient(45deg,#ffd700,#ff6ec7,#8a5cff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:12px}
+#ov p{font-size:14px;margin:8px 0;max-width:600px;line-height:1.7}
+#ov button,.end-btn{margin-top:15px;padding:14px 40px;font-size:18px;font-family:Tahoma;background:linear-gradient(45deg,#ffd700,#ff6ec7);border:none;border-radius:30px;color:#1a0b2e;font-weight:bold;cursor:pointer}
+.hid{display:none!important}
+#mc{position:absolute;bottom:15px;left:0;right:0;display:none;z-index:50;pointer-events:none}
+#mc.on{display:flex;justify-content:space-between;padding:0 15px}
+.cg{display:flex;gap:8px;pointer-events:auto}
+.cb{width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#5c2cff88,#2a1055aa);border:3px solid #ffd700;color:#fff;font-size:24px;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 10px rgba(0,0,0,.5)}
+.cb:active,.cb.pr{transform:scale(.88);background:linear-gradient(135deg,#8a5cffcc,#5c2ffff)}
+.cb.jmp{width:70px;height:70px;font-size:28px}
+.dp{display:grid;grid-template-columns:repeat(3,52px);grid-template-rows:repeat(2,52px);gap:4px;direction:ltr}
+.dp .l{grid-column:1;grid-row:2}
+.dp .r{grid-column:3;grid-row:2}
+.dp .u{grid-column:2;grid-row:1}
+#testBtn{position:absolute;top:50px;left:10px;z-index:200;padding:8px 14px;font-size:12px;font-family:Tahoma;background:rgba(255,0,0,.8);color:#fff;border:2px solid #fff;border-radius:8px;cursor:pointer;pointer-events:auto;font-weight:bold}
+#testBtn:active{transform:scale(.95)}
+#es{position:absolute;inset:0;background:linear-gradient(135deg,#1a0b2e,#2a1a4a);display:none;flex-direction:column;align-items:center;justify-content:flex-start;z-index:200;padding:20px;overflow-y:auto}
+#es.on{display:flex}
+.ec{text-align:center;max-width:700px;animation:fi 2s ease-in;width:100%}
+@keyframes fi{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.cc{position:relative;width:320px;height:320px;margin:0 auto 25px}
+.pf{position:absolute;width:150px;height:190px;border:5px solid #ffd700;border-radius:12px;overflow:hidden;box-shadow:0 10px 40px rgba(255,215,0,.5)}
+.pf.m{left:10px;top:65px;z-index:1}
+.pf.s{right:10px;top:65px;z-index:2}
+.pf.k{animation:km 2.5s ease-in-out}
+@keyframes km{0%{transform:translateX(0)}50%{transform:translateX(30px)}100%{transform:translateX(0)}}
+.ht{position:absolute;font-size:44px;animation:hf 2s ease-in-out infinite;top:10px;left:50%;transform:translateX(-50%);z-index:3}
+@keyframes hf{0%,100%{transform:translateX(-50%) translateY(0) scale(1)}50%{transform:translateX(-50%) translateY(-20px) scale(1.3)}}
+.pc{background:linear-gradient(135deg,rgba(255,110,199,.15),rgba(138,92,255,.15));border:2px solid #ffd700;border-radius:20px;padding:30px;margin:20px 0;box-shadow:0 0 30px rgba(255,215,0,.3)}
+.pm{font-size:18px;line-height:2.6;color:#fff;text-shadow:0 0 10px #ff6ec7}
+.pl{display:block;margin:10px 0;animation:pf 3s ease-in}
+@keyframes pf{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.fc{position:relative;width:220px;height:280px;margin:25px auto}
+.fl{position:absolute;width:100%;height:100%;left:0;top:0;animation:fg 2.5s ease-out,ff 3.5s ease-in-out infinite 2.5s}
+@keyframes fg{0%{transform:scale(0) rotate(-180deg);opacity:0}60%{opacity:1}100%{transform:scale(1) rotate(0);opacity:1}}
+@keyframes ff{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-15px) rotate(3deg)}}
+.fl svg{width:100%;height:100%;filter:drop-shadow(0 0 20px rgba(255,110,199,.6))}
+.dd{font-size:24px;color:#ffd700;text-shadow:0 0 15px #ff6ec7;margin:20px 0;animation:dg 2s ease-in-out infinite alternate}
+@keyframes dg{from{text-shadow:0 0 15px #ff6ec7,0 0 25px #ff1493}to{text-shadow:0 0 40px #ffd700,0 0 60px #ff6ec7}}
+.sd{font-size:15px;color:#fff;margin:12px 0;opacity:.9}
+.et{font-size:32px;background:linear-gradient(45deg,#ffd700,#ff6ec7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:18px}
+.sana-mention{font-size:16px;color:#ff6ec7;margin:8px 0;font-style:italic;text-shadow:0 0 10px #ff6ec7}
+</style>
+</head>
+<body>
+<div id="gc">
+<canvas id="cv"></canvas>
+<div id="hud" class="hid">
+<div class="hb">❤️ <span id="hp">100</span></div>
+<div class="hb">⚔️ <span id="sc">0</span></div>
+<div class="hb">🏰 <span id="lv">1</span>/3</div>
+</div>
+<button id="testBtn" class="hid" onclick="killAllForTest()">🧪 کشتن همه دشمنان</button>
+<div id="mc">
+<div class="cg dp">
+<div class="cb l" data-key="ArrowLeft">⬅️</div>
+<div class="cb u" data-key="Space">⬆️</div>
+<div class="cb r" data-key="ArrowRight">➡️</div>
+</div>
+<div class="cg">
+<div class="cb" data-key="KeyZ" style="background:linear-gradient(135deg,#5cc8ff88,#1e90ffaa)">✨</div>
+<div class="cb jmp" data-key="KeyX" style="background:linear-gradient(135deg,#ff6ec788,#ff1493aa)">⚔️</div>
+</div>
+</div>
+<div id="es">
+<div class="ec">
+<div class="ht">💖</div>
+<div class="cc">
+<div class="pf m" id="mf"><div style="width:100%;height:100%;background:linear-gradient(135deg,#5cc8ff,#1e90ff);display:flex;align-items:center;justify-content:center;font-size:60px">🦸</div></div>
+<div class="pf s" id="sf"><div style="width:100%;height:100%;background:linear-gradient(135deg,#ff6ec7,#ff1493);display:flex;align-items:center;justify-content:center;font-size:60px">👸</div></div>
+</div>
+<h1 class="et">✨ و آنها تا ابد خوشبخت زندگی کردند ✨</h1>
+<p class="sana-mention">💫 معراج، شاهزاده سنا را از چنگال تاریکی رهانید 💫</p>
+<div class="pc">
+<div class="pm">
+<span class="pl">ای سنای من، ای ماه تابان شب تارم</span>
+<span class="pl">آرامش جان و نور چشمان بیمارم</span>
+<span class="pl">در هر نفسی عطر گیسوان تو جاری‌ست</span>
+<span class="pl">بی روی تو این جان، پریشان و خالیست </span>
+<span class="pl">&nbsp;</span>
+<span class="pl">معراج زِ عشق تو دلیر و بی‌باک آمد</span>
+<span class="pl">از کوه و بیابان و از آتش آمد</span>
+<span class="pl">با تیغ و دعا با همه دشمن جنگید</span>
+<span class="pl">تا بار دگر یارِ خود در آرد</span>
+<span class="pl">&nbsp;</span>
+<span class="pl">ای گل که به بستانِ دلم ریشه دواندی</span>
+<span class="pl">ای نغمهٔ خوش که در سرم ماندی</span>
+<span class="pl">تا جان به تن دارم، کنار تو خواهم ماند</span>
+<span class="pl">ای سنای من، ای عشقِ پاکِ آسمانیم</span>
+</div>
+</div>
+<div class="fc">
+<div class="fl">
+<svg viewBox="0 0 200 280" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<radialGradient id="pg" cx="50%" cy="50%"><stop offset="0%" stop-color="#ffb6d9"/><stop offset="50%" stop-color="#ff6ec7"/><stop offset="100%" stop-color="#c71585"/></radialGradient>
+<radialGradient id="cg" cx="50%" cy="50%"><stop offset="0%" stop-color="#fff4a0"/><stop offset="100%" stop-color="#ff8c00"/></radialGradient>
+<linearGradient id="sg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#4a7c2a"/><stop offset="100%" stop-color="#2d5016"/></linearGradient>
+<linearGradient id="lg" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#2d5016"/><stop offset="100%" stop-color="#5a9c3a"/></linearGradient>
+</defs>
+<path d="M 100 150 Q 95 200 100 270" stroke="url(#sg)" stroke-width="6" fill="none" stroke-linecap="round"/>
+<path d="M 100 210 Q 60 200 50 220 Q 60 235 100 225 Z" fill="url(#lg)"/>
+<path d="M 100 230 Q 140 220 150 240 Q 140 255 100 245 Z" fill="url(#lg)"/>
+<g transform="translate(100,110)">
+<ellipse cx="0" cy="-30" rx="25" ry="35" fill="url(#pg)" transform="rotate(0)"/>
+<ellipse cx="0" cy="-30" rx="25" ry="35" fill="url(#pg)" transform="rotate(72)"/>
+<ellipse cx="0" cy="-30" rx="25" ry="35" fill="url(#pg)" transform="rotate(144)"/>
+<ellipse cx="0" cy="-30" rx="25" ry="35" fill="url(#pg)" transform="rotate(216)"/>
+<ellipse cx="0" cy="-30" rx="25" ry="35" fill="url(#pg)" transform="rotate(288)"/>
+<ellipse cx="0" cy="-20" rx="18" ry="25" fill="#ff8fb4" transform="rotate(36)" opacity="0.9"/>
+<ellipse cx="0" cy="-20" rx="18" ry="25" fill="#ff8fb4" transform="rotate(108)" opacity="0.9"/>
+<ellipse cx="0" cy="-20" rx="18" ry="25" fill="#ff8fb4" transform="rotate(180)" opacity="0.9"/>
+<ellipse cx="0" cy="-20" rx="18" ry="25" fill="#ff8fb4" transform="rotate(252)" opacity="0.9"/>
+<ellipse cx="0" cy="-20" rx="18" ry="25" fill="#ff8fb4" transform="rotate(324)" opacity="0.9"/>
+<circle cx="0" cy="0" r="15" fill="url(#cg)"/>
+<circle cx="-3" cy="-3" r="4" fill="#fff" opacity="0.6"/>
+</g>
+</svg>
+</div>
+</div>
+<div class="dd">🌹 تقدیم به تو ای گل زندگی من 🌹</div>
+<div class="sd">امتیاز نهایی: <span id="fs">0</span></div>
+<button class="end-btn" onclick="location.reload()">🎮 بازی دوباره</button>
+</div>
+</div>
+<div id="ov">
+<h1>⚔️ معراج و نجات شاهزاده سنا ⚔️</h1>
+<p>شاهزاده زیبا <b style="color:#ff6ec7">سنا</b> توسط هیولاهای تاریکی ربوده شده!</p>
+<p>شوالیه دلیر <b style="color:#5cc8ff">معراج</b> باید از سه سرزمین جادویی بگذرد و او را نجات دهد.</p>
+<p style="font-size:12px;opacity:.7;margin-top:14px">🎮 دسکتاپ: ← → حرکت | Space پرش | X حمله | Z جادو<br>📱 موبایل: دکمه‌های روی صفحه<br>🧪 <b>تست:</b> کلید K یا دکمه قرمز گوشه صفحه</p>
+<button onclick="startGame()">شروع ماجراجویی</button>
+</div>
+</div>
 
-  <head>
-    <style>
-        body{
-            font-family: IRANSans;
+<script>
+const cv=document.getElementById('cv'),cx=cv.getContext('2d');
+const $=id=>document.getElementById(id);
+const mob=/Android|iPhone|iPad|iPod|webOS/i.test(navigator.userAgent);
+
+let W,H,GROUND_Y;
+function resizeCanvas(){
+  W=Math.min(1280,innerWidth);
+  H=Math.min(720,Math.max(400,innerHeight*.75));
+  cv.width=W;cv.height=H;
+  GROUND_Y=H-80;
+}
+resizeCanvas();
+window.addEventListener('resize',()=>{resizeCanvas();if(G)G.lv=mkLv(G.ln)});
+
+const keys={};
+addEventListener('keydown',e=>{keys[e.code]=true;if(['ArrowLeft','ArrowRight','Space'].includes(e.code))e.preventDefault();if(e.key==='k'||e.key==='K')killAllForTest()});
+addEventListener('keyup',e=>{keys[e.code]=false});
+if(mob){
+  $('mc').classList.add('on');
+  document.querySelectorAll('.cb').forEach(b=>{
+    const k=b.dataset.key;
+    const s=e=>{e.preventDefault();keys[k]=true;b.classList.add('pr')};
+    const d=e=>{e.preventDefault();keys[k]=false;b.classList.remove('pr')};
+    b.addEventListener('touchstart',s,{passive:false});
+    b.addEventListener('touchend',d,{passive:false});
+    b.addEventListener('mousedown',s);b.addEventListener('mouseup',d);b.addEventListener('mouseleave',d);
+  });
+}
+
+let ac=null,mi=null,mi2=null;
+const melodies={
+  1:{lead:[523.25,659.25,783.99,880,1046.5,880,783.99,659.25,523.25,587.33,659.25,783.99],bass:[130.81,164.81,196,220,196,164.81,130.81,146.83],type:'triangle',tempo:380},
+  2:{lead:[220,261.63,293.66,329.63,293.66,261.63,220,196,174.61,196,220,261.63],bass:[110,130.81,146.83,164.81,146.83,130.81,110,98],type:'sine',tempo:500},
+  3:{lead:[293.66,349.23,392,440,523.25,587.33,659.25,587.33,523.25,440,392,349.23],bass:[146.83,174.61,196,220,196,174.61,146.83,130.81],type:'sawtooth',tempo:450}
+};
+function playMusic(lv){stopMusic();try{ac=new(AudioContext||webkitAudioContext)();const m=melodies[lv];let li=0,bi=0;const playLead=()=>{const o=ac.createOscillator(),g=ac.createGain();const f=ac.createBiquadFilter();f.type='lowpass';f.frequency.value=2000;o.connect(f);f.connect(g);g.connect(ac.destination);o.frequency.value=m.lead[li];o.type=m.type;g.gain.setValueAtTime(.10,ac.currentTime);g.gain.exponentialRampToValueAtTime(.01,ac.currentTime+.5);o.start();o.stop(ac.currentTime+.5);li=(li+1)%m.lead.length};const playBass=()=>{const o=ac.createOscillator(),g=ac.createGain();o.connect(g);g.connect(ac.destination);o.frequency.value=m.bass[bi];o.type='sine';g.gain.setValueAtTime(.08,ac.currentTime);g.gain.exponentialRampToValueAtTime(.01,ac.currentTime+.8);o.start();o.stop(ac.currentTime+.8);bi=(bi+1)%m.bass.length};playLead();playBass();mi=setInterval(playLead,m.tempo);mi2=setInterval(playBass,m.tempo*2)}catch(e){}}
+function stopMusic(){if(mi){clearInterval(mi);mi=null}if(mi2){clearInterval(mi2);mi2=null}if(ac){ac.close();ac=null}}
+function playWin(){stopMusic();try{ac=new(AudioContext||webkitAudioContext)();const m=[523.25,659.25,783.99,1046.5,783.99,659.25,523.25,659.25,783.99,880,1046.5,880,783.99,659.25,523.25,659.25,783.99,1046.5,1318.51];let i=0;const p=()=>{const o=ac.createOscillator(),g=ac.createGain();o.connect(g);g.connect(ac.destination);o.frequency.value=m[i];o.type='sine';g.gain.setValueAtTime(.18,ac.currentTime);g.gain.exponentialRampToValueAtTime(.01,ac.currentTime+.35);o.start();o.stop(ac.currentTime+.35);i=(i+1)%m.length};p();mi=setInterval(p,280)}catch(e){}}
+
+class Pt{constructor(x,y,c,vx,vy,l=30,s=3){this.x=x;this.y=y;this.c=c;this.vx=vx;this.vy=vy;this.l=l;this.ml=l;this.s=s}up(){this.x+=this.vx;this.y+=this.vy;this.vy+=.15;this.l--}dr(cm){const a=this.l/this.ml;cx.globalAlpha=a;cx.fillStyle=this.c;cx.beginPath();cx.arc(this.x-cm.x,this.y-cm.y,this.s*a,0,Math.PI*2);cx.fill();cx.globalAlpha=1}}
+
+class Item{constructor(x,y,t){this.x=x;this.y=y;this.t=t;this.got=false;this.a=0}up(){this.a++}dr(cm){if(this.got)return;const x=this.x-cm.x,y=this.y+Math.sin(this.a*.1)*5;cx.save();cx.shadowBlur=12;cx.font='22px Arial';if(this.t==='h'){cx.shadowColor='#f35';cx.fillText('❤️',x,y)}else if(this.t==='p'){cx.shadowColor='#fd0';cx.fillText('⚡',x,y)}else{cx.shadowColor='#5cf';cx.fillText('✨',x,y)}cx.restore()}}
+
+class Meraj{constructor(x,y){this.x=x;this.y=y;this.w=40;this.h=60;this.vx=0;this.vy=0;this.gnd=false;this.f=1;this.hp=100;this.atk=0;this.acd=0;this.mcd=0;this.inv=0;this.an=0;this.pw=0}
+  up(lv){
+    const sp=mob?7:6;
+    if(keys.ArrowLeft){this.vx=-sp;this.f=-1}
+    else if(keys.ArrowRight){this.vx=sp;this.f=1}
+    else this.vx*=.7;
+    if(keys.Space&&this.gnd){this.vy=-14;this.gnd=false;for(let i=0;i<6;i++)G.pts.push(new Pt(this.x+20,this.y+60,'#8a5cff',(Math.random()-.5)*3,-Math.random()*2,18))}
+    if(keys.KeyX&&this.acd<=0){this.atk=20;this.acd=25;for(let i=0;i<8;i++)G.pts.push(new Pt(this.x+20+this.f*30,this.y+20,'#fd0',this.f*Math.random()*4,(Math.random()-.5)*3,20,2))}
+    if(keys.KeyZ&&this.mcd<=0){G.pjs.push({x:this.x+20,y:this.y+25,vx:this.f*10,vy:0,l:60,d:30,o:'p'});this.mcd=40}
+    this.vy+=.7;if(this.vy>15)this.vy=15;
+    this.x+=this.vx;this.y+=this.vy;
+    this.gnd=false;
+    for(const p of lv.pl){if(this.x+this.w>p.x&&this.x<p.x+p.w&&this.y+this.h>p.y&&this.y+this.h<p.y+p.h+15&&this.vy>=0){this.y=p.y-this.h;this.vy=0;this.gnd=true}}
+    
+    // ✅ برخورد فیزیکی با دشمنان (push away برای جلوگیری از گیر کردن)
+    for(const e of lv.en){
+      if(!e.alive)continue;
+      const ox=(this.x+this.w/2)-(e.x+e.w/2);
+      const oy=(this.y+this.h/2)-(e.y+e.h/2);
+      const minDist=(this.w+e.w)/2-5;
+      const dx=Math.abs(ox),dy=Math.abs(oy);
+      if(dx<(this.w+e.w)/2 && dy<(this.h+e.h)/2){
+        // هل دادن بازیکن به بیرون از دشمن
+        if(dx>dy){
+          // هل دادن افقی
+          if(ox>0){this.x=e.x+e.w+1;this.vx=Math.max(this.vx,3)}
+          else{this.x=e.x-this.w-1;this.vx=Math.min(this.vx,-3)}
+        }else{
+          // هل دادن عمودی
+          if(oy>0){this.y=e.y+e.h+1;this.vy=Math.max(this.vy,2)}
+          else{this.y=e.y-this.h-1;this.vy=Math.min(this.vy,-3);this.gnd=false}
         }
-    </style>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,500,700,900" rel="stylesheet">
-    <link rel="shortcut icon" type="image/png" href="images/logo-me.png">
-    <link rel="shortcut icon" sizes="196x196" href="images/logo-me.png">
-
-    <title>Meraj Bighamian</title>
-
-    <!-- CSS Files -->
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-
-    <link rel="stylesheet" type="text/css" href="css/fonts.css">
-
-    <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
-
-    <link rel="stylesheet" type="text/css" href="css/fullpage.min.css">
-
-    <link rel="stylesheet" type="text/css" href="css/owl.carousel.css">
-
-    <link rel="stylesheet" href="css/animate.css">
-
-    <link rel="stylesheet" href="css/style.css">
-
-    <link rel="stylesheet" href="css/responsive.css">
-
-    </head>
+      }
+    }
     
-    <body>
-    
-    <div id="video">
-        <div class="preloader">
-            <div class="preloader-bounce">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
+    if(this.x<0)this.x=0;if(this.x>lv.w-this.w)this.x=lv.w-this.w;if(this.y>H+200)this.hp=0;
+    if(this.atk>0)this.atk--;if(this.acd>0)this.acd--;if(this.mcd>0)this.mcd--;if(this.inv>0)this.inv--;if(this.pw>0)this.pw--;this.an++;
+  }
+  hit(d,knockDir=0){
+    if(this.inv>0)return;
+    this.hp-=d;this.inv=60; // ✅ زمان آسیب‌ناپذیری بیشتر (40 → 60)
+    // ✅ knockback برای جلوگیری از گیر کردن
+    if(knockDir!==0){
+      this.vx=knockDir*6;
+      this.vy=-5;
+      this.gnd=false;
+    }else{
+      this.vx=this.f*-5;
+      this.vy=-4;
+    }
+    for(let i=0;i<12;i++)G.pts.push(new Pt(this.x+20,this.y+30,'#f35',(Math.random()-.5)*6,(Math.random()-.5)*6,25));
+  }
+  dr(cm){const x=this.x-cm.x,y=this.y-cm.y;if(this.inv>0&&~~(this.inv/4)%2)return;cx.save();cx.translate(x+20,y+30);cx.scale(this.f,1);cx.translate(-20,-30);if(this.pw>0){cx.shadowColor='#fd0';cx.shadowBlur=18}const cw=Math.sin(this.an*.2)*3;cx.fillStyle='#1e40af';cx.beginPath();cx.moveTo(10,15);cx.quadraticCurveTo(-5+cw,40,5,58);cx.lineTo(25,58);cx.quadraticCurveTo(30,40,25,15);cx.closePath();cx.fill();cx.strokeStyle='#fd0';cx.lineWidth=1.5;cx.stroke();const la=Math.abs(this.vx)>.5?Math.sin(this.an*.3)*5:0;cx.fillStyle='#3a3a5c';cx.fillRect(12,45+la,7,15);cx.fillRect(21,45-la,7,15);const g=cx.createLinearGradient(0,20,0,50);g.addColorStop(0,'#c0c0d8');g.addColorStop(1,'#6a6a8a');cx.fillStyle=g;cx.fillRect(8,20,24,28);cx.fillStyle='#fd0';cx.beginPath();cx.moveTo(20,28);cx.lineTo(23,33);cx.lineTo(20,38);cx.lineTo(17,33);cx.closePath();cx.fill();cx.fillStyle='#f4c28a';cx.fillRect(12,5,16,16);cx.fillStyle='#2a1810';cx.fillRect(11,3,18,7);cx.fillRect(11,3,4,10);cx.fillStyle='#1a4480';cx.fillRect(22,11,2,2);cx.strokeStyle='#8a4422';cx.lineWidth=1;cx.beginPath();cx.moveTo(21,17);cx.lineTo(25,17);cx.stroke();if(this.atk>0){const sw=(20-this.atk)/20;cx.save();cx.translate(28,28);cx.rotate(-Math.PI/2+sw*Math.PI*1.2);const sg=cx.createLinearGradient(0,0,40,0);sg.addColorStop(0,'#fff');sg.addColorStop(1,this.pw>0?'#fd0':'#5cf');cx.fillStyle=sg;cx.fillRect(0,-2,40,4);cx.shadowColor=this.pw>0?'#fd0':'#5cf';cx.shadowBlur=12;cx.fillRect(0,-2,40,4);cx.shadowBlur=0;cx.fillStyle='#8b4513';cx.fillRect(-6,-3,6,6);cx.fillStyle='#fd0';cx.fillRect(-2,-5,2,10);cx.restore()}else{cx.fillStyle='#c0c0d8';cx.fillRect(25,25,3,25);cx.fillStyle='#fd0';cx.fillRect(23,23,7,3)}cx.restore()}
+  atkBox(){if(this.atk<=0)return null;return{x:this.f>0?this.x+20:this.x-40,y:this.y+10,w:50,h:40}}}
 
-        <header id="header">
-            <div class="container-fluid">
-                <div class="navbar">
-                    <a href="#" id="logo" title="Merajbighamian">
-                        Meraj Bighamian
-                    </a>
-                    <div class="navigation-row">
-                        <nav id="navigation">
-                            <button type="button" class="navbar-toggle"> <i class="fa fa-bars"></i> </button>
-                            <div class="nav-box navbar-collapse">
-                                <ul class="navigation-menu nav navbar-nav navbars" id="nav">
-                                    <li data-menuanchor="slide01" class="active"><a href="#slide01">Home</a></li>
-                                    <li data-menuanchor="slide02"><a href="#slide02">About Me</a></li>
-                                    <li data-menuanchor="slide03"><a href="#slide03">Services</a></li>
-                                    <li data-menuanchor="slide04"><a href="#slide04">My Skills</a></li>
-                                    <li data-menuanchor="slide05"><a href="#slide05">My Work</a></li>
-                                
-                          
-                                </ul>
-                            </div>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </header>
+class Enemy{constructor(x,y,t='shadow'){this.x=x;this.y=y;this.w=36;this.h=44;this.vx=-2;this.vy=0;this.hp=40;this.t=t;this.an=0;this.acd=0;this.scd=0;this.alive=true;this.maxHp=40;this.baseY=y; // ✅ ارتفاع پایه برای fly
+if(t==='orc'){this.hp=70;this.maxHp=70;this.w=44;this.h=52}if(t==='b1'){this.hp=150;this.maxHp=150;this.w=70;this.h=80}if(t==='b2'){this.hp=250;this.maxHp=250;this.w=75;this.h=85}if(t==='b3'){this.hp=400;this.maxHp=400;this.w=90;this.h=100}if(t==='fly'){this.hp=50;this.maxHp=50;this.w=40;this.h=35;this.vy=0}if(t==='mage'){this.hp=60;this.maxHp=60;this.w=38;this.h=48}}
+  up(lv){
+    if(!this.alive)return;
+    this.an++;
+    if(this.t==='fly'){
+      // ✅ پرنده‌ها: پرواز افقی با مرزها + موج عمودی
+      this.x+=this.vx;
+      this.y=this.baseY+Math.sin(this.an*.05)*20;
+      
+      // ✅ مرزهای افقی برای پرنده
+      if(this.x<50){this.x=50;this.vx=Math.abs(this.vx)}
+      if(this.x>lv.w-this.w-50){this.x=lv.w-this.w-50;this.vx=-Math.abs(this.vx)}
+    }else{
+      this.vy+=.7;
+      this.x+=this.vx;this.y+=this.vy;
+      for(const p of lv.pl){if(this.x+this.w>p.x&&this.x<p.x+p.w&&this.y+this.h>p.y&&this.y+this.h<p.y+p.h+15&&this.vy>=0){this.y=p.y-this.h;this.vy=0}}
+      let oe=true;for(const p of lv.pl){const cx2=this.vx>0?this.x+this.w+5:this.x-5;if(cx2>p.x&&cx2<p.x+p.w&&Math.abs(this.y+this.h-p.y)<5){oe=false;break}}
+      if(oe&&this.y<H)this.vx*=-1;
+      if(this.x<0){this.x=0;this.vx=Math.abs(this.vx)}
+      if(this.x>lv.w-this.w){this.x=lv.w-this.w;this.vx=-Math.abs(this.vx)}
+    }
+    if(this.acd>0)this.acd--;if(this.scd>0)this.scd--;
+    const dx=G.m.x-this.x,dy=G.m.y-this.y;
+    if(Math.abs(dx)<200&&Math.abs(dy)<80){ // ✅ dy بیشتر برای پرنده
+      if(this.t!=='fly')this.vx=dx>0?(mob?3:2.5):-(mob?3:2.5);
+      if(Math.abs(dx)<50&&Math.abs(dy)<60&&this.acd<=0){
+        // ✅ knockback به بازیکن با جهت مشخص
+        const knockDir=dx>0?1:-1;
+        G.m.hit(this.t[0]==='b'?20:10,knockDir);
+        this.acd=60;
+      }
+    }
+    if(this.t[0]==='b'&&this.scd<=0&&Math.abs(dx)<300){G.pjs.push({x:this.x+this.w/2,y:this.y+this.h/2,vx:dx>0?6:-6,vy:0,l:80,d:15,o:'e'});this.scd=120}
+  }
+  dr(cm){if(!this.alive)return;const x=this.x-cm.x,y=this.y-cm.y,b=Math.sin(this.an*.15)*2;if(this.t==='shadow'){cx.fillStyle='#2a0845';cx.beginPath();cx.ellipse(x+18,y+30+b,18,22,0,0,Math.PI*2);cx.fill();cx.shadowColor='#8a5cff';cx.shadowBlur=12;cx.fill();cx.shadowBlur=0;cx.fillStyle='#f35';cx.beginPath();cx.arc(x+12,y+25+b,3,0,Math.PI*2);cx.arc(x+24,y+25+b,3,0,Math.PI*2);cx.fill()}else if(this.t==='orc'){cx.fillStyle='#3a5c2a';cx.fillRect(x+4,y+20,36,32);cx.fillStyle='#4a7c3a';cx.fillRect(x+8,y+4,28,22);cx.fillStyle='#ff0';cx.fillRect(x+14,y+12,4,4);cx.fillRect(x+26,y+12,4,4);cx.fillStyle='#fff';cx.fillRect(x+15,y+22,3,5);cx.fillRect(x+26,y+22,3,5);cx.fillStyle='#8b4513';cx.fillRect(x-5,y+15,4,30);cx.fillStyle='#888';cx.beginPath();cx.moveTo(x-8,y+10);cx.lineTo(x+2,y+10);cx.lineTo(x+2,y+20);cx.lineTo(x-12,y+15);cx.closePath();cx.fill()}else if(this.t==='fly'){cx.fillStyle='#4a0080';cx.beginPath();cx.ellipse(x+20,y+17+b,20,15,0,0,Math.PI*2);cx.fill();cx.shadowColor='#8a5cff';cx.shadowBlur=8;cx.fill();cx.shadowBlur=0;cx.fillStyle='#6a00a0';cx.beginPath();cx.moveTo(x+5,y+17);cx.lineTo(x-10,y+5);cx.lineTo(x+5,y+10);cx.fill();cx.beginPath();cx.moveTo(x+35,y+17);cx.lineTo(x+50,y+5);cx.lineTo(x+35,y+10);cx.fill();cx.fillStyle='#ff0';cx.beginPath();cx.arc(x+14,y+14+b,3,0,Math.PI*2);cx.arc(x+26,y+14+b,3,0,Math.PI*2);cx.fill()}else if(this.t==='mage'){cx.fillStyle='#2a0040';cx.fillRect(x+8,y+20,22,28);cx.fillStyle='#4a0060';cx.fillRect(x+10,y+5,18,18);cx.fillStyle='#1a0030';cx.beginPath();cx.moveTo(x+10,y+8);cx.lineTo(x+19,y-10);cx.lineTo(x+28,y+8);cx.closePath();cx.fill();cx.fillStyle='#ff0';cx.beginPath();cx.arc(x+15,y+13,2,0,Math.PI*2);cx.arc(x+23,y+13,2,0,Math.PI*2);cx.fill();cx.fillStyle='#8b4513';cx.fillRect(x+30,y+10,3,35);cx.fillStyle='#ff6ec7';cx.beginPath();cx.arc(x+31,y+8,4,0,Math.PI*2);cx.fill()}else if(this.t[0]==='b'){const sz=this.t==='b3'?1.3:this.t==='b2'?1.1:1;cx.fillStyle=this.t==='b3'?'#4a0020':this.t==='b2'?'#2a0040':'#1a0030';cx.beginPath();cx.ellipse(x+this.w/2,y+this.h/2+b,this.w/2*sz,this.h/2*sz,0,0,Math.PI*2);cx.fill();cx.shadowColor='#f04';cx.shadowBlur=20;cx.fill();cx.shadowBlur=0;cx.fillStyle='#1a0010';cx.beginPath();cx.moveTo(x+15,y+20);cx.lineTo(x+10,y-5);cx.lineTo(x+25,y+15);cx.fill();cx.beginPath();cx.moveTo(x+this.w-15,y+20);cx.lineTo(x+this.w-10,y-5);cx.lineTo(x+this.w-25,y+15);cx.fill();cx.fillStyle='#ff0';cx.beginPath();cx.arc(x+this.w/2-15,y+this.h/2-10+b,5,0,Math.PI*2);cx.arc(x+this.w/2+15,y+this.h/2-10+b,5,0,Math.PI*2);cx.fill();cx.fillStyle='#f00';cx.beginPath();cx.arc(x+this.w/2-15,y+this.h/2-10+b,2,0,Math.PI*2);cx.arc(x+this.w/2+15,y+this.h/2-10+b,2,0,Math.PI*2);cx.fill();cx.fillStyle='#000';cx.fillRect(x+this.w/2-15,y+this.h/2+10+b,30,8);cx.fillStyle='#fff';for(let i=0;i<5;i++)cx.fillRect(x+this.w/2-13+i*6,y+this.h/2+10+b,2,5)}if(this.hp<this.maxHp){cx.fillStyle='#400';cx.fillRect(x,y-8,this.w,4);cx.fillStyle='#f44';cx.fillRect(x,y-8,this.w*(this.hp/this.maxHp),4)}}
+  dmg(d){if(!this.alive)return;this.hp-=d;for(let i=0;i<8;i++)G.pts.push(new Pt(this.x+this.w/2,this.y+this.h/2,'#ff6ec7',(Math.random()-.5)*5,(Math.random()-.5)*5,20));if(this.hp<=0){this.alive=false;G.score+=this.t[0]==='b'?500:this.t==='orc'?100:50;for(let i=0;i<20;i++)G.pts.push(new Pt(this.x+this.w/2,this.y+this.h/2,'#ff6ec7',(Math.random()-.5)*8,(Math.random()-.5)*8,35,3))}}}
 
-        <video autoplay muted loop id="myVideo">
-          <source src="images/video-back.mp4" type="video/mp4">
-        </video>
+function killAllForTest(){
+  if(!G||G.st!=='play')return;
+  for(const e of G.lv.en){
+    if(e.alive){
+      e.alive=false;
+      G.score+=e.t[0]==='b'?500:e.t==='orc'?100:50;
+      for(let i=0;i<20;i++)G.pts.push(new Pt(e.x+e.w/2,e.y+e.h/2,'#ff6ec7',(Math.random()-.5)*8,(Math.random()-.5)*8,35,3));
+    }
+  }
+}
 
-        <div id="fullpage" class="fullpage-default">
+function mkLv(n){
+  const GY=GROUND_Y;
+  const GH=80;
+  const l={pl:[],en:[],it:[],w:3500,bg:n,gx:3300,nm:''};
+  
+  if(n===1){
+    l.nm='🌲 جنگل جادویی';l.c1='#0a1a3a';l.c2='#1a3a5a';
+    l.pl.push({x:0,y:GY,w:900,h:GH},{x:1000,y:GY,w:700,h:GH},{x:1800,y:GY,w:1700,h:GH});
+    l.pl.push({x:300,y:GY-120,w:140,h:25},{x:550,y:GY-200,w:140,h:25},{x:1100,y:GY-120,w:170,h:25},{x:1400,y:GY-200,w:140,h:25},{x:2000,y:GY-120,w:220,h:25},{x:2400,y:GY-180,w:170,h:25},{x:2800,y:GY-120,w:170,h:25});
+    // ✅ پرنده در ارتفاع GY-160 (بالای زمین، قابل دسترسی با پرش و جادو)
+    l.en.push(new Enemy(650,GY-44,'shadow'),new Enemy(1200,GY-44,'shadow'),new Enemy(1600,GY-180,'fly'),new Enemy(2100,GY-52,'orc'),new Enemy(2600,GY-44,'shadow'),new Enemy(3100,GY-80,'b1'));
+    l.it.push(new Item(400,GY-80,'h'),new Item(750,GY-30,'h'),new Item(1300,GY-150,'p'),new Item(1700,GY-30,'h'),new Item(2200,GY-150,'m'),new Item(2900,GY-30,'h'));
+  }else if(n===2){
+    l.nm='🕯️ غار تاریک';l.c1='#1a0a2a';l.c2='#3a1a4a';
+    l.pl.push({x:0,y:GY,w:600,h:GH},{x:700,y:GY,w:500,h:GH},{x:1300,y:GY,w:500,h:GH},{x:1900,y:GY,w:1600,h:GH});
+    l.pl.push({x:250,y:GY-120,w:120,h:25},{x:750,y:GY-140,w:140,h:25},{x:1350,y:GY-160,w:140,h:25},{x:2000,y:GY-120,w:170,h:25},{x:2300,y:GY-200,w:170,h:25},{x:2700,y:GY-120,w:170,h:25});
+    l.en.push(new Enemy(450,GY-52,'orc'),new Enemy(850,GY-48,'mage'),new Enemy(1500,GY-180,'fly'),new Enemy(2100,GY-52,'orc'),new Enemy(2500,GY-48,'mage'),new Enemy(3200,GY-85,'b2'));
+    l.it.push(new Item(350,GY-80,'h'),new Item(550,GY-30,'h'),new Item(900,GY-170,'p'),new Item(1150,GY-30,'h'),new Item(1700,GY-80,'m'),new Item(1950,GY-30,'h'),new Item(2400,GY-230,'h'),new Item(2800,GY-30,'h'));
+  }else{
+    l.nm='🏰 قلعه تاریکی';l.c1='#2a0a1a';l.c2='#4a1a2a';
+    l.pl.push({x:0,y:GY,w:3500,h:GH});
+    l.pl.push({x:350,y:GY-120,w:170,h:25},{x:700,y:GY-180,w:170,h:25},{x:1050,y:GY-120,w:170,h:25},{x:1400,y:GY-180,w:170,h:25},{x:1750,y:GY-120,w:170,h:25});
+    l.en.push(new Enemy(600,GY-52,'orc'),new Enemy(1000,GY-48,'mage'),new Enemy(1500,GY-180,'fly'),new Enemy(3000,GY-100,'b3'));
+    l.it.push(new Item(450,GY-80,'h'),new Item(700,GY-30,'h'),new Item(850,GY-210,'p'),new Item(1150,GY-30,'h'),new Item(1300,GY-80,'m'),new Item(1500,GY-30,'h'),new Item(1700,GY-210,'h'),new Item(1900,GY-30,'h'));
+  }
+  return l;
+}
 
-            <div class="section animated-row" data-section="slide01">
-                <div class="section-inner">
-                    <div class="welcome-box">
-                        <span class=" font welcome-first animate" data-animate="fadeInUp">Hi</span>
-                        <h1 class="font welcome-title animate" data-animate="fadeInUp">I'm Meraj Bighamian</h1>
-                        <p class="animate" data-animate="fadeInUp">Full stack  web developer with Django and Python<br>Mobile developer with Flutter and PWA</p>
-                        <div class="scroll-down next-section animate data-animate="fadeInUp""><img src="images/mouse-scroll.png" alt=""><span>scroll down</span></div>
-                    </div>
-                </div>
-            </div>
+function drBg(l,cm){const g=cx.createLinearGradient(0,0,0,H);g.addColorStop(0,l.c1);g.addColorStop(1,l.c2);cx.fillStyle=g;cx.fillRect(0,0,W,H);for(let i=0;i<50;i++){const sx=(i*137-cm.x*.2)%W,sy=(i*71)%(H-100),tw=Math.sin(G.t*.05+i)*.5+.5;cx.fillStyle=`rgba(255,255,255,${tw*.7})`;cx.fillRect(sx<0?sx+W:sx,sy,2,2)}cx.fillStyle='#fff8d0';cx.shadowColor='#fff8d0';cx.shadowBlur=25;cx.beginPath();cx.arc(W-100-cm.x*.05,80,38,0,Math.PI*2);cx.fill();cx.shadowBlur=0;cx.fillStyle='rgba(0,0,0,.4)';for(let i=0;i<6;i++){const mx=(i*400-cm.x*.3)%(W+400);cx.beginPath();cx.moveTo(mx,H-100);cx.lineTo(mx+100,H-250);cx.lineTo(mx+200,H-100);cx.closePath();cx.fill()}cx.fillStyle='rgba(20,10,40,.6)';for(let i=0;i<10;i++){const tx=(i*250-cm.x*.6)%(W+250);if(l.bg===1){cx.beginPath();cx.moveTo(tx,H-80);cx.lineTo(tx+15,H-190);cx.lineTo(tx+30,H-80);cx.closePath();cx.fill()}else if(l.bg===2){cx.beginPath();cx.moveTo(tx,0);cx.lineTo(tx+10,80);cx.lineTo(tx+20,0);cx.closePath();cx.fill()}else{cx.fillRect(tx,H-250,22,170);cx.fillRect(tx-4,H-260,30,12)}}}
+function drPl(l,cm){for(const p of l.pl){const x=p.x-cm.x,y=p.y;if(x+p.w<0||x>W)continue;const g=cx.createLinearGradient(0,y,0,y+p.h);if(l.bg===1){g.addColorStop(0,'#3a5a2a');g.addColorStop(1,'#1a2a10')}else if(l.bg===2){g.addColorStop(0,'#5a4a6a');g.addColorStop(1,'#2a1a3a')}else{g.addColorStop(0,'#6a4a3a');g.addColorStop(1,'#3a2a1a')}cx.fillStyle=g;cx.fillRect(x,y,p.w,p.h);cx.fillStyle=l.bg===1?'#5a8a3a':l.bg===2?'#8a6a9a':'#8a6a4a';cx.fillRect(x,y,p.w,4)}}
+function drSana(x,y,cm){const sx=x-cm.x,sy=y,b=Math.sin(G.t*.08)*3;cx.save();cx.shadowColor='#ff6ec7';cx.shadowBlur=25;cx.fillStyle='rgba(255,110,199,.25)';cx.beginPath();cx.ellipse(sx+20,sy+40,35,45,0,0,Math.PI*2);cx.fill();cx.restore();for(let i=0;i<5;i++){const a=G.t*.03+i*Math.PI/2.5;cx.fillStyle=`rgba(255,200,255,${.4+Math.sin(G.t*.1+i)*.3})`;cx.beginPath();cx.arc(sx+20+Math.cos(a)*30,sy+40+Math.sin(a)*40,2,0,Math.PI*2);cx.fill()}const dg=cx.createLinearGradient(0,sy+20,0,sy+80);dg.addColorStop(0,'#9a3a9a');dg.addColorStop(1,'#5a1a6a');cx.fillStyle=dg;cx.beginPath();cx.moveTo(sx+5,sy+25);cx.lineTo(sx+35,sy+25);cx.lineTo(sx+42,sy+80);cx.lineTo(sx-2,sy+80);cx.closePath();cx.fill();cx.strokeStyle='#fd0';cx.lineWidth=2;cx.beginPath();cx.moveTo(sx+5,sy+25);cx.lineTo(sx+35,sy+25);cx.stroke();cx.fillStyle='#f4d2a8';cx.beginPath();cx.arc(sx+20,sy+15+b,10,0,Math.PI*2);cx.fill();cx.fillStyle='#4a2810';cx.beginPath();cx.arc(sx+20,sy+12+b,11,Math.PI,Math.PI*2);cx.fill();cx.fillRect(sx+10,sy+12+b,3,22);cx.fillRect(sx+27,sy+12+b,3,22);cx.fillStyle='#fd0';cx.beginPath();cx.moveTo(sx+12,sy+5+b);cx.lineTo(sx+15,sy-2+b);cx.lineTo(sx+18,sy+5+b);cx.lineTo(sx+20,sy-4+b);cx.lineTo(sx+22,sy+5+b);cx.lineTo(sx+25,sy-2+b);cx.lineTo(sx+28,sy+5+b);cx.closePath();cx.fill();cx.fillStyle='#f35';cx.beginPath();cx.arc(sx+20,sy+2+b,1.5,0,Math.PI*2);cx.fill();cx.fillStyle='#2a6a4a';cx.fillRect(sx+16,sy+15+b,2,2);cx.fillRect(sx+22,sy+15+b,2,2);cx.strokeStyle='#c44';cx.lineWidth=1;cx.beginPath();cx.arc(sx+20,sy+19+b,2,0,Math.PI);cx.stroke();cx.fillStyle='#fd0';cx.font='bold 14px Tahoma';cx.textAlign='center';cx.shadowColor='#fd0';cx.shadowBlur=8;cx.fillText('👑 سنا',sx+20,sy-12+b);cx.shadowBlur=0}
 
-            <div class="section animated-row" data-section="slide02">
-                <div class="section-inner">
-                    <div class="about-section">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-8 wide-col-laptop">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="about-contentbox">
-                                            <div class="animate" data-animate="fadeInUp">
-                                                <span class="font">About Me</span>
-                                                <h2>Who am i?</h2>
-                                                <p>I am a <strong>Full stack</strong> web developer with <strong>Python</strong> and <strong>Django Freamwork</strong>
-                                                <br>I've been <strong>programming</strong> with <strong>Python</strong> for <strong>five years</strong>
-                                                <br><strong>My Phone</strong> : <a href="tel:+989373951511">09373951511</a>
-                                                <br><strong>My Email</strong> : <a href="mailto:merajbighamian@gmail.com">merajbighamian@gmail.com</a>
-                                            </div>
-                                            <div class="facts-list owl-carousel">
-                                                <div class="item animate" data-animate="fadeInUp">
-                                                    <div class="counter-box">
-                                                        <i class="fa fa-trophy counter-icon" aria-hidden="true"></i><span class="count-number">2</span> Awards Won
-                                                    </div>
-                                                </div>
-                                                <div class="item animate" data-animate="fadeInUp">
-                                                    <div class="counter-box">
-                                                        <i class="fa fa-tasks counter-icon" aria-hidden="true"></i><span class="count-number">4</span> Project
-                                                        
-                                                    </div>
-                                                </div>
-                                                <div class="item animate" data-animate="fadeInUp">
-                                                    <div class="counter-box">
-                                                        <i class="fa fa-desktop counter-icon" aria-hidden="true"></i><span class="count-number">5</span> Working Years
-                                                    </div>
-                                                </div>
-                                                
-                                                <div class="item animate" data-animate="fadeInUp">
-                                                    <div class="counter-box">
-                                                        <i class="fa fa-certificate counter-icon" aria-hidden="true"></i><span class="count-number">5</span> Certificates
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <figure class="about-img animate" data-animate="fadeInUp"><img src="images/python.jpg" class="rounded" alt=""></figure>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+let G=null,ltTimer=0,showLC=false,kissAn=false;
 
-            <div class="section animated-row" data-section="slide03">
-                <div class="section-inner">
-                    <div class="row justify-content-center">
-                        <div class="col-md-8 wide-col-laptop">
-                            <div class="title-block animate" data-animate="fadeInUp">
-                                <span>Services</span>
-                                <h2>What I Do?</h2>
-                            </div>
-                            <div class="services-section">
-                                <div class="services-list owl-carousel">
-                                    <div class="item animate" data-animate="fadeInUp">
-                                        <div class="service-box">
-                                            <span class="service-icon"><i class="fa fa-sitemap" aria-hidden="true"></i></span>
-                                            <h3>Build Website</h3>
-                                            <p>I can create different websites like store websites or showcase for dear customers. These websites are built with new and up-to-date technologies!</p>
-                                        </div>
-                                    </div>
-                                    <div class="item animate" data-animate="fadeInUp">
-                                        <div class="service-box">
-                                            <span class="service-icon"><i class="fa fa-cloud" aria-hidden="true"></i></span>
-                                            <h3>HTML5 Coding</h3>
-                                            <p>I can Html 5 coding for your bussines websute</p>
-                                        </div>
-                                    </div>
-                                    <div class="item animate" data-animate="fadeInUp">
-                                        <div class="service-box">
-                                            <span class="service-icon"><i class="fa fa-desktop" aria-hidden="true"></i></span>
-                                            <h3>Fully Responsive</h3>
-                                            <p>I make websites fully responsive for customers</p>
-                                        </div>
-                                    </div>
-                                    <div class="item animate" data-animate="fadeInUp">
-                                        <div class="service-box">
-                                            <span class="service-icon"><i class="fa fa-mobile" aria-hidden="true"></i></span>
-                                            <h3>Mobile App</h3>
-                                            <p>I can build native Mobile App  for your bussines(with beautiful Design)</p>
-                                        </div>
-                                    </div>
-                                    <div class="item animate" data-animate="fadeInUp">
-                                        <div class="service-box">
-                                            <span class="service-icon"><i class="fa fa-comments" aria-hidden="true"></i></span>
-                                            <h3>Fast Support</h3>
-                                            <p>Fast Support for website or mobileapp in any time</p>
-                                        </div>
-                                    </div>
-                                    <div class="item animate" data-animate="fadeInUp">
-                                        <div class="service-box">
-                                            <span class="service-icon"><i class="fa fa-database" aria-hidden="true"></i></span>
-                                            <h3>18-hour Up Time</h3>
-                                            <p>I am active in 18 time for support website and Mobile app your bussiness</p>
-                                        </div>
-                                    </div>
-                                    <div class="item animate" data-animate="fadeInUp">
-                                        <div class="service-box">
-                                            <span class="service-icon"><i class="fa fa-windows" aria-hidden="true"></i></span>
-                                            <h3>Build Windows App</h3>
-                                            <p>I can Build Windows App for your Bussines</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+function startGame(){
+  $('ov').classList.add('hid');$('hud').classList.remove('hid');$('testBtn').classList.remove('hid');
+  if(mob)$('mc').classList.add('on');
+  const lv=mkLv(1);
+  G={ln:1,lv,m:new Meraj(50,GROUND_Y-100),pts:[],pjs:[],cm:{x:0,y:0},t:0,score:0,st:'play',sr:false,lcDone:false};
+  ltTimer=0;showLC=false;kissAn=false;playMusic(1);requestAnimationFrame(loop);
+}
 
-            <div class="section animated-row" data-section="slide04">
-                <div class="section-inner">
-                    <div class="row justify-content-center">
-                        <div class="col-md-7 wide-col-laptop">
-                            <div class="title-block animate" data-animate="fadeInUp">
-                                <span>My Skills</span>
-                                <h2>What i’m good?</h2>
-                            </div>
-                            <div class="skills-row animate" data-animate="fadeInDown">
-                                <div class="row">
-                                    <div class="col-md-8 offset-md-2">   
-                                        <div class="skill-item">
-                                            <h6>HTML CSS</h6>
-                                            <div class="skill-bar">
-                                                <span>90%</span>
-                                                <div class="filled-bar-2"></div>
-                                            </div>          
-                                        </div>
-                                        <div class="skill-item">
-                                            <h6>DJANGO</h6>
-                                            <div class="skill-bar">
-                                                <span>90%</span>
-                                                <div class="filled-bar-2"></div>
-                                            </div>          
-                                        </div>
-                                        <div class="skill-item">
-                                            <h6>Python</h6>
-                                            <div class="skill-bar">
-                                                <span>90%</span>
-                                                <div class="filled-bar-2"></div>
-                                            </div>          
-                                        </div>
-                                        <div class="skill-item last-skill">
-                                            <h6>JavaScript</h6>
-                                            <div class="skill-bar">
-                                                <span>90%</span>
-                                                <div class="filled-bar-2"></div>
-                                            </div>          
-                                        </div>           
-                                        <div class="skill-item">
-                                            <h6>linux</h6>
-                                            <div class="skill-bar">
-                                                <span>70%</span>
-                                                <div class="filled-bar"></div>
-                                            </div>          
-                                        </div>
-                                        <div class="skill-item last-skill">
-                                            <h6>Bootstrap</h6>
-                                            <div class="skill-bar">
-                                                <span>90%</span>
-                                                <div class="filled-bar-2"></div>
-                                            </div>          
-                                        </div>                   
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+function showLCMsg(){
+  if(G.lcDone)return;G.lcDone=true;showLC=true;
+  const d=document.createElement('div');d.id='tlc';
+  d.style.cssText='position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:linear-gradient(135deg,#2a1055ee,#5c2cffaa);border:3px solid #ffd700;padding:30px 45px;border-radius:20px;text-align:center;box-shadow:0 0 40px #8a5cff;z-index:100';
+  d.innerHTML='<h2 style="color:#ffd700;font-size:28px;margin-bottom:12px">🎉 مرحله تکمیل شد! 🎉</h2><p>همه دشمنان شکست خوردند!</p><p>رفتن به مرحله بعد...</p>';
+  $('gc').appendChild(d);ltTimer=180;
+}
 
-            <div class="section animated-row" data-section="slide05">
-                <div class="section-inner">
-                    <div class="row justify-content-center">
-                        <div class="col-md-8 wide-col-laptop">
-                            <div class="title-block animate" data-animate="fadeInUp">
-                                <span>My Work</span>
-                                <h2>what i’ve done?</h2>
-                            </div>
-                            <div class="gallery-section">
-                                <div class="gallery-list owl-carousel">
-                                    <div class="item animate" data-animate="fadeInUp">
-                                        <div class="portfolio-item">
-                                            <div class="thumb">
-                                                <img src="images/tem1.jpg" alt="template">
-                                            </div>
-                                            <div class="thumb-inner animate" data-animate="fadeInUp">
-                                                <h4>Design Template</h4>
-                                                <p>I can design and implement responsive and engaging templates</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item animate" data-animate="fadeInUp">
-                                        <div class="portfolio-item">
-                                            <div class="thumb">
-                                                <img src="images/bot.jpg" alt="bot">
-                                            </div>
-                                            <div class="thumb-inner animate" data-animate="fadeInUp">
-                                                <h4>build Telegram Bot</h4>
-                                                <p>build Telegram bot</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item animate" data-animate="fadeInUp">
-                                        <div class="portfolio-item">
-                                            <div class="thumb">
-                                                <img src="images/mobile-app-architecture.png" alt="modileapp">
-                                            </div>
-                                            <div class="thumb-inner animate" data-animate="fadeInUp">
-                                                <h4>Build Mobile App</h4>
-                                                <p>Ican build mobile app for bussines</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="item animate" data-animate="fadeInUp">
-                                        <div class="portfolio-item">
-                                            <div class="thumb">
-                                                <img src="images/windowsapp.png" alt="windowsapp">
-                                            </div>
-                                            <div class="thumb-inner animate" data-animate="fadeInUp">
-                                                <h4>Build Windows App</h4>
-                                                <p>I Can Build Windowes App for your Bussines</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+function nextLv(){
+  const d=$('tlc');if(d)d.remove();showLC=false;ltTimer=0;G.ln++;
+  if(G.ln>3){winGame();return}
+  G.lv=mkLv(G.ln);G.m=new Meraj(50,GROUND_Y-100);G.pts=[];G.pjs=[];G.lcDone=false;
+  $('lv').textContent=G.ln;playMusic(G.ln);
+}
 
-        <div id="social-icons">
-            <div class="text-right">
-                <ul class="social-icons">
-                    <li><a href="https://twitter.com/BighamianMeraj" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                    <li><a href="https://www.linkedin.com/in/meraj-bighamian-7034581a3" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
-                    <li><a href="https://www.instagram.com/merajbighamian" title="Instagram"><i class="fa fa-instagram"></i></a></li>
-                </ul>
-            </div>
-        </div>
-    </div>  
+function winGame(){
+  G.st='won';kissAn=true;
+  $('mf').classList.add('k');$('sf').classList.add('k');
+  for(let i=0;i<20;i++)setTimeout(()=>{const h=document.createElement('div');h.innerHTML='💖';h.style.cssText=`position:absolute;font-size:${20+Math.random()*30}px;left:${25+Math.random()*50}%;top:${15+Math.random()*35}%;animation:hf ${1+Math.random()}s ease-out forwards;pointer-events:none`;document.querySelector('.cc').appendChild(h);setTimeout(()=>h.remove(),2000)},i*200);
+  playWin();
+  setTimeout(()=>{$('es').classList.add('on');$('fs').textContent=G.score},3000);
+}
 
-    <script src="js/jquery.js"></script>
+function loseGame(){
+  G.st='lost';stopMusic();$('ov').classList.remove('hid');
+  $('ov').innerHTML=`<h1 style="background:linear-gradient(45deg,#f00,#800);-webkit-background-clip:text;-webkit-text-fill-color:transparent">💀 شکست 💀</h1><p>معراج در راه نجات سنا سقوط کرد...</p><p>امتیاز: ${G.score}</p><button onclick="location.reload()">تلاش دوباره</button>`;
+}
 
-    <script src="js/bootstrap.min.js"></script>
+function loop(){
+  if(G.st!=='play')return;
+  G.t++;
+  if(showLC){ltTimer--;if(ltTimer<=0)nextLv();requestAnimationFrame(loop);return}
 
-    <script src="js/fullpage.min.js"></script>
+  G.m.up(G.lv);
+  for(const e of G.lv.en)e.up(G.lv);
 
-    <script src="js/scrolloverflow.js"></script>
+  const ab=G.m.atkBox();
+  if(ab)for(const e of G.lv.en)if(e.alive&&ab.x<e.x+e.w&&ab.x+ab.w>e.x&&ab.y<e.y+e.h&&ab.y+ab.h>e.y&&!e._h){e.dmg(G.m.pw>0?40:25);e._h=15}
+  for(const e of G.lv.en)if(e._h>0)e._h--;
 
-    <script src="js/owl.carousel.min.js"></script>
+  for(const p of G.pjs){
+    p.x+=p.vx;p.y+=p.vy;p.l--;
+    if(p.o==='p')for(const e of G.lv.en)if(e.alive&&p.x>e.x&&p.x<e.x+e.w&&p.y>e.y&&p.y<e.y+e.h){e.dmg(p.d);p.l=0;for(let i=0;i<10;i++)G.pts.push(new Pt(p.x,p.y,'#5cf',(Math.random()-.5)*6,(Math.random()-.5)*6,25))}
+    if(p.o==='e'&&p.x>G.m.x&&p.x<G.m.x+G.m.w&&p.y>G.m.y&&p.y<G.m.y+G.m.h){G.m.hit(p.d,p.vx>0?1:-1);p.l=0}
+    G.pts.push(new Pt(p.x,p.y,p.o==='p'?'#5cf':'#f35',0,0,12,2));
+  }
+  G.pjs=G.pjs.filter(p=>p.l>0);
 
-    <script src="js/jquery.inview.min.js"></script>
+  for(const it of G.lv.it){
+    if(!it.got){it.up();if(Math.abs(G.m.x+20-it.x-12)<30&&Math.abs(G.m.y+30-it.y-12)<30){
+      it.got=true;G.score+=50;
+      if(it.t==='h'){G.m.hp=Math.min(100,G.m.hp+30);for(let i=0;i<10;i++)G.pts.push(new Pt(it.x+12,it.y+12,'#f35',(Math.random()-.5)*4,(Math.random()-.5)*4,25))}
+      else if(it.t==='p'){G.m.pw=300;for(let i=0;i<10;i++)G.pts.push(new Pt(it.x+12,it.y+12,'#fd0',(Math.random()-.5)*4,(Math.random()-.5)*4,25))}
+      else{G.m.mcd=0;for(let i=0;i<10;i++)G.pts.push(new Pt(it.x+12,it.y+12,'#5cf',(Math.random()-.5)*4,(Math.random()-.5)*4,25))}
+    }}
+  }
 
-    <script src="js/form.js"></script>
+  // ✅ فقط شمارش دقیق - بدون fail-safe
+  let aliveCount=0;
+  for(const e of G.lv.en){if(e.alive)aliveCount++}
+  if(aliveCount===0&&G.ln<3&&!showLC&&!G.lcDone)showLCMsg();
 
-    <script src="js/custom.js"></script>
+  for(const p of G.pts)p.up();G.pts=G.pts.filter(p=>p.l>0);
+  const tc=G.m.x-W/2+20;G.cm.x+=(tc-G.cm.x)*.1;if(G.cm.x<0)G.cm.x=0;if(G.cm.x>G.lv.w-W)G.cm.x=G.lv.w-W;
+  if(G.ln===3&&G.m.x>G.lv.gx-100&&!G.sr&&!kissAn){G.sr=true;setTimeout(winGame,1000)}
+  if(G.m.hp<=0){loseGame();return}
 
+  drBg(G.lv,G.cm);drPl(G.lv,G.cm);
+  if(G.ln===3)drSana(G.lv.gx,GROUND_Y-80,G.cm);
+  for(const e of G.lv.en)if(e.alive)e.dr(G.cm);
+  for(const it of G.lv.it)it.dr(G.cm);
+  for(const p of G.pjs){cx.fillStyle=p.o==='p'?'#5cf':'#f35';cx.shadowColor=cx.fillStyle;cx.shadowBlur=12;cx.beginPath();cx.arc(p.x-G.cm.x,p.y,7,0,Math.PI*2);cx.fill();cx.shadowBlur=0}
+  G.m.dr(G.cm);
+  for(const p of G.pts)p.dr(G.cm);
+  cx.fillStyle='rgba(255,255,255,.6)';cx.font='bold 20px Tahoma';cx.textAlign='center';cx.fillText(G.lv.nm,W/2,40);
+  $('hp').textContent=Math.max(0,~~G.m.hp);$('sc').textContent=G.score;
+  if(G.sr&&!kissAn){cx.fillStyle='rgba(0,0,0,.5)';cx.fillRect(0,H/2-40,W,80);cx.fillStyle='#fd0';cx.font='bold 32px Tahoma';cx.textAlign='center';cx.shadowColor='#fd0';cx.shadowBlur=15;cx.fillText('✨ معراج سنا را نجات داد! ✨',W/2,H/2+10);cx.shadowBlur=0}
+  requestAnimationFrame(loop);
+}
 
-  </body>
+document.addEventListener('touchmove',e=>e.preventDefault(),{passive:false});
+</script>
+</body>
 </html>
