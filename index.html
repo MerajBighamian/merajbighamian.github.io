@@ -28,7 +28,7 @@ canvas{display:block;background:#000;width:100%;height:auto}
 .dp .u{grid-column:2;grid-row:1}
 #testBtn{position:absolute;top:50px;left:10px;z-index:200;padding:8px 14px;font-size:12px;font-family:Tahoma;background:rgba(255,0,0,.8);color:#fff;border:2px solid #fff;border-radius:8px;cursor:pointer;pointer-events:auto;font-weight:bold}
 #testBtn:active{transform:scale(.95)}
-#es{position:absolute;inset:0;background:linear-gradient(135deg,#1a0b2e,#2a1a4a);display:none;flex-direction:column;align-items:center;justify-content:flex-start;z-index:200;padding:20px;overflow-y:auto}
+#es{position:absolute;inset:0;background:linear-gradient(135deg,#1a0b2e,#2a1a4a);display:none;flex-direction:column;align-items:center;justify-content:flex-start;z-index:200;padding:20px;overflow-y:auto;scroll-behavior:smooth}
 #es.on{display:flex}
 .ec{text-align:center;max-width:700px;animation:fi 2s ease-in;width:100%}
 @keyframes fi{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
@@ -54,6 +54,25 @@ canvas{display:block;background:#000;width:100%;height:auto}
 .sd{font-size:15px;color:#fff;margin:12px 0;opacity:.9}
 .et{font-size:32px;background:linear-gradient(45deg,#ffd700,#ff6ec7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:18px}
 .sana-mention{font-size:16px;color:#ff6ec7;margin:8px 0;font-style:italic;text-shadow:0 0 10px #ff6ec7}
+/* ✅ نشانگر اسکرول */
+.scroll-hint{
+  position:sticky;
+  bottom:10px;
+  left:50%;
+  transform:translateX(-50%);
+  background:rgba(255,215,0,.2);
+  border:1px solid #ffd700;
+  padding:8px 16px;
+  border-radius:20px;
+  font-size:12px;
+  color:#ffd700;
+  margin-top:20px;
+  animation:bounce 1.5s ease-in-out infinite;
+}
+@keyframes bounce{
+  0%,100%{transform:translate(-50%,0)}
+  50%{transform:translate(-50%,-5px)}
+}
 </style>
 </head>
 <body>
@@ -87,20 +106,20 @@ canvas{display:block;background:#000;width:100%;height:auto}
 <p class="sana-mention">💫 معراج، شاهزاده سنا را از چنگال تاریکی رهانید 💫</p>
 <div class="pc">
 <div class="pm">
-<span class="pl">ای سنای من، ای ماه تابان شب تارم</span>
-<span class="pl">آرامش جان و نور چشمان بیمارم</span>
-<span class="pl">در هر نفسی عطر گیسوان تو جاری‌ست</span>
-<span class="pl">بی روی تو این جان، پریشان و خالیست </span>
-<span class="pl">&nbsp;</span>
-<span class="pl">معراج زِ عشق تو دلیر و بی‌باک آمد</span>
-<span class="pl">از کوه و بیابان و از آتش آمد</span>
-<span class="pl">با تیغ و دعا با همه دشمن جنگید</span>
-<span class="pl">تا بار دگر یارِ خود در آرد</span>
-<span class="pl">&nbsp;</span>
-<span class="pl">ای گل که به بستانِ دلم ریشه دواندی</span>
-<span class="pl">ای نغمهٔ خوش که در سرم ماندی</span>
-<span class="pl">تا جان به تن دارم، کنار تو خواهم ماند</span>
-<span class="pl">ای سنای من، ای عشقِ پاکِ آسمانیم</span>
+  <span class="pl">ای سنای من، ای ماه تابان شب تارم</span>
+  <span class="pl">آرامش جان و نور چشمان بیمارم</span>
+  <span class="pl">در هر نفسی عطر گیسوان تو جاری‌ست</span>
+  <span class="pl">بی روی تو این جان، پریشان و خالیست </span>
+  <span class="pl">&nbsp;</span>
+  <span class="pl">معراج زِ عشق تو دلیر و بی‌باک آمد</span>
+  <span class="pl">از کوه و بیابان و از آتش آمد</span>
+  <span class="pl">با تیغ و دعا با همه دشمن جنگید</span>
+  <span class="pl">تا بار دگر یارِ خود در آرد</span>
+  <span class="pl">&nbsp;</span>
+  <span class="pl">ای گل که به بستانِ دلم ریشه دواندی</span>
+  <span class="pl">ای نغمهٔ خوش که در سرم ماندی</span>
+  <span class="pl">تا جان به تن دارم، کنار تو خواهم ماند</span>
+  <span class="pl">ای سنای من، ای عشقِ پاکِ آسمانیم</span>
 </div>
 </div>
 <div class="fc">
@@ -139,7 +158,7 @@ canvas{display:block;background:#000;width:100%;height:auto}
 </div>
 <div id="ov">
 <h1>⚔️ معراج و نجات شاهزاده سنا ⚔️</h1>
-<p>شاهزاده زیبا <b style="color:#ff6ec7">سنا</b> توسط هیولاهای تاریکی ربوده شده!</p>
+<p>شاهزاده زیبای <b style="color:#ff6ec7">سنا</b> توسط هیولاهای تاریکی ربوده شده!</p>
 <p>شوالیه دلیر <b style="color:#5cc8ff">معراج</b> باید از سه سرزمین جادویی بگذرد و او را نجات دهد.</p>
 <p style="font-size:12px;opacity:.7;margin-top:14px">🎮 دسکتاپ: ← → حرکت | Space پرش | X حمله | Z جادو<br>📱 موبایل: دکمه‌های روی صفحه<br>🧪 <b>تست:</b> کلید K یا دکمه قرمز گوشه صفحه</p>
 <button onclick="startGame()">شروع ماجراجویی</button>
@@ -203,59 +222,42 @@ class Meraj{constructor(x,y){this.x=x;this.y=y;this.w=40;this.h=60;this.vx=0;thi
     this.x+=this.vx;this.y+=this.vy;
     this.gnd=false;
     for(const p of lv.pl){if(this.x+this.w>p.x&&this.x<p.x+p.w&&this.y+this.h>p.y&&this.y+this.h<p.y+p.h+15&&this.vy>=0){this.y=p.y-this.h;this.vy=0;this.gnd=true}}
-    
-    // ✅ برخورد فیزیکی با دشمنان (push away برای جلوگیری از گیر کردن)
     for(const e of lv.en){
       if(!e.alive)continue;
       const ox=(this.x+this.w/2)-(e.x+e.w/2);
       const oy=(this.y+this.h/2)-(e.y+e.h/2);
-      const minDist=(this.w+e.w)/2-5;
       const dx=Math.abs(ox),dy=Math.abs(oy);
       if(dx<(this.w+e.w)/2 && dy<(this.h+e.h)/2){
-        // هل دادن بازیکن به بیرون از دشمن
         if(dx>dy){
-          // هل دادن افقی
           if(ox>0){this.x=e.x+e.w+1;this.vx=Math.max(this.vx,3)}
           else{this.x=e.x-this.w-1;this.vx=Math.min(this.vx,-3)}
         }else{
-          // هل دادن عمودی
           if(oy>0){this.y=e.y+e.h+1;this.vy=Math.max(this.vy,2)}
           else{this.y=e.y-this.h-1;this.vy=Math.min(this.vy,-3);this.gnd=false}
         }
       }
     }
-    
     if(this.x<0)this.x=0;if(this.x>lv.w-this.w)this.x=lv.w-this.w;if(this.y>H+200)this.hp=0;
     if(this.atk>0)this.atk--;if(this.acd>0)this.acd--;if(this.mcd>0)this.mcd--;if(this.inv>0)this.inv--;if(this.pw>0)this.pw--;this.an++;
   }
   hit(d,knockDir=0){
     if(this.inv>0)return;
-    this.hp-=d;this.inv=60; // ✅ زمان آسیب‌ناپذیری بیشتر (40 → 60)
-    // ✅ knockback برای جلوگیری از گیر کردن
-    if(knockDir!==0){
-      this.vx=knockDir*6;
-      this.vy=-5;
-      this.gnd=false;
-    }else{
-      this.vx=this.f*-5;
-      this.vy=-4;
-    }
+    this.hp-=d;this.inv=60;
+    if(knockDir!==0){this.vx=knockDir*6;this.vy=-5;this.gnd=false}
+    else{this.vx=this.f*-5;this.vy=-4}
     for(let i=0;i<12;i++)G.pts.push(new Pt(this.x+20,this.y+30,'#f35',(Math.random()-.5)*6,(Math.random()-.5)*6,25));
   }
   dr(cm){const x=this.x-cm.x,y=this.y-cm.y;if(this.inv>0&&~~(this.inv/4)%2)return;cx.save();cx.translate(x+20,y+30);cx.scale(this.f,1);cx.translate(-20,-30);if(this.pw>0){cx.shadowColor='#fd0';cx.shadowBlur=18}const cw=Math.sin(this.an*.2)*3;cx.fillStyle='#1e40af';cx.beginPath();cx.moveTo(10,15);cx.quadraticCurveTo(-5+cw,40,5,58);cx.lineTo(25,58);cx.quadraticCurveTo(30,40,25,15);cx.closePath();cx.fill();cx.strokeStyle='#fd0';cx.lineWidth=1.5;cx.stroke();const la=Math.abs(this.vx)>.5?Math.sin(this.an*.3)*5:0;cx.fillStyle='#3a3a5c';cx.fillRect(12,45+la,7,15);cx.fillRect(21,45-la,7,15);const g=cx.createLinearGradient(0,20,0,50);g.addColorStop(0,'#c0c0d8');g.addColorStop(1,'#6a6a8a');cx.fillStyle=g;cx.fillRect(8,20,24,28);cx.fillStyle='#fd0';cx.beginPath();cx.moveTo(20,28);cx.lineTo(23,33);cx.lineTo(20,38);cx.lineTo(17,33);cx.closePath();cx.fill();cx.fillStyle='#f4c28a';cx.fillRect(12,5,16,16);cx.fillStyle='#2a1810';cx.fillRect(11,3,18,7);cx.fillRect(11,3,4,10);cx.fillStyle='#1a4480';cx.fillRect(22,11,2,2);cx.strokeStyle='#8a4422';cx.lineWidth=1;cx.beginPath();cx.moveTo(21,17);cx.lineTo(25,17);cx.stroke();if(this.atk>0){const sw=(20-this.atk)/20;cx.save();cx.translate(28,28);cx.rotate(-Math.PI/2+sw*Math.PI*1.2);const sg=cx.createLinearGradient(0,0,40,0);sg.addColorStop(0,'#fff');sg.addColorStop(1,this.pw>0?'#fd0':'#5cf');cx.fillStyle=sg;cx.fillRect(0,-2,40,4);cx.shadowColor=this.pw>0?'#fd0':'#5cf';cx.shadowBlur=12;cx.fillRect(0,-2,40,4);cx.shadowBlur=0;cx.fillStyle='#8b4513';cx.fillRect(-6,-3,6,6);cx.fillStyle='#fd0';cx.fillRect(-2,-5,2,10);cx.restore()}else{cx.fillStyle='#c0c0d8';cx.fillRect(25,25,3,25);cx.fillStyle='#fd0';cx.fillRect(23,23,7,3)}cx.restore()}
   atkBox(){if(this.atk<=0)return null;return{x:this.f>0?this.x+20:this.x-40,y:this.y+10,w:50,h:40}}}
 
-class Enemy{constructor(x,y,t='shadow'){this.x=x;this.y=y;this.w=36;this.h=44;this.vx=-2;this.vy=0;this.hp=40;this.t=t;this.an=0;this.acd=0;this.scd=0;this.alive=true;this.maxHp=40;this.baseY=y; // ✅ ارتفاع پایه برای fly
+class Enemy{constructor(x,y,t='shadow'){this.x=x;this.y=y;this.w=36;this.h=44;this.vx=-2;this.vy=0;this.hp=40;this.t=t;this.an=0;this.acd=0;this.scd=0;this.alive=true;this.maxHp=40;this.baseY=y;
 if(t==='orc'){this.hp=70;this.maxHp=70;this.w=44;this.h=52}if(t==='b1'){this.hp=150;this.maxHp=150;this.w=70;this.h=80}if(t==='b2'){this.hp=250;this.maxHp=250;this.w=75;this.h=85}if(t==='b3'){this.hp=400;this.maxHp=400;this.w=90;this.h=100}if(t==='fly'){this.hp=50;this.maxHp=50;this.w=40;this.h=35;this.vy=0}if(t==='mage'){this.hp=60;this.maxHp=60;this.w=38;this.h=48}}
   up(lv){
     if(!this.alive)return;
     this.an++;
     if(this.t==='fly'){
-      // ✅ پرنده‌ها: پرواز افقی با مرزها + موج عمودی
       this.x+=this.vx;
       this.y=this.baseY+Math.sin(this.an*.05)*20;
-      
-      // ✅ مرزهای افقی برای پرنده
       if(this.x<50){this.x=50;this.vx=Math.abs(this.vx)}
       if(this.x>lv.w-this.w-50){this.x=lv.w-this.w-50;this.vx=-Math.abs(this.vx)}
     }else{
@@ -269,10 +271,9 @@ if(t==='orc'){this.hp=70;this.maxHp=70;this.w=44;this.h=52}if(t==='b1'){this.hp=
     }
     if(this.acd>0)this.acd--;if(this.scd>0)this.scd--;
     const dx=G.m.x-this.x,dy=G.m.y-this.y;
-    if(Math.abs(dx)<200&&Math.abs(dy)<80){ // ✅ dy بیشتر برای پرنده
+    if(Math.abs(dx)<200&&Math.abs(dy)<80){
       if(this.t!=='fly')this.vx=dx>0?(mob?3:2.5):-(mob?3:2.5);
       if(Math.abs(dx)<50&&Math.abs(dy)<60&&this.acd<=0){
-        // ✅ knockback به بازیکن با جهت مشخص
         const knockDir=dx>0?1:-1;
         G.m.hit(this.t[0]==='b'?20:10,knockDir);
         this.acd=60;
@@ -298,12 +299,10 @@ function mkLv(n){
   const GY=GROUND_Y;
   const GH=80;
   const l={pl:[],en:[],it:[],w:3500,bg:n,gx:3300,nm:''};
-  
   if(n===1){
     l.nm='🌲 جنگل جادویی';l.c1='#0a1a3a';l.c2='#1a3a5a';
     l.pl.push({x:0,y:GY,w:900,h:GH},{x:1000,y:GY,w:700,h:GH},{x:1800,y:GY,w:1700,h:GH});
     l.pl.push({x:300,y:GY-120,w:140,h:25},{x:550,y:GY-200,w:140,h:25},{x:1100,y:GY-120,w:170,h:25},{x:1400,y:GY-200,w:140,h:25},{x:2000,y:GY-120,w:220,h:25},{x:2400,y:GY-180,w:170,h:25},{x:2800,y:GY-120,w:170,h:25});
-    // ✅ پرنده در ارتفاع GY-160 (بالای زمین، قابل دسترسی با پرش و جادو)
     l.en.push(new Enemy(650,GY-44,'shadow'),new Enemy(1200,GY-44,'shadow'),new Enemy(1600,GY-180,'fly'),new Enemy(2100,GY-52,'orc'),new Enemy(2600,GY-44,'shadow'),new Enemy(3100,GY-80,'b1'));
     l.it.push(new Item(400,GY-80,'h'),new Item(750,GY-30,'h'),new Item(1300,GY-150,'p'),new Item(1700,GY-30,'h'),new Item(2200,GY-150,'m'),new Item(2900,GY-30,'h'));
   }else if(n===2){
@@ -327,6 +326,48 @@ function drPl(l,cm){for(const p of l.pl){const x=p.x-cm.x,y=p.y;if(x+p.w<0||x>W)
 function drSana(x,y,cm){const sx=x-cm.x,sy=y,b=Math.sin(G.t*.08)*3;cx.save();cx.shadowColor='#ff6ec7';cx.shadowBlur=25;cx.fillStyle='rgba(255,110,199,.25)';cx.beginPath();cx.ellipse(sx+20,sy+40,35,45,0,0,Math.PI*2);cx.fill();cx.restore();for(let i=0;i<5;i++){const a=G.t*.03+i*Math.PI/2.5;cx.fillStyle=`rgba(255,200,255,${.4+Math.sin(G.t*.1+i)*.3})`;cx.beginPath();cx.arc(sx+20+Math.cos(a)*30,sy+40+Math.sin(a)*40,2,0,Math.PI*2);cx.fill()}const dg=cx.createLinearGradient(0,sy+20,0,sy+80);dg.addColorStop(0,'#9a3a9a');dg.addColorStop(1,'#5a1a6a');cx.fillStyle=dg;cx.beginPath();cx.moveTo(sx+5,sy+25);cx.lineTo(sx+35,sy+25);cx.lineTo(sx+42,sy+80);cx.lineTo(sx-2,sy+80);cx.closePath();cx.fill();cx.strokeStyle='#fd0';cx.lineWidth=2;cx.beginPath();cx.moveTo(sx+5,sy+25);cx.lineTo(sx+35,sy+25);cx.stroke();cx.fillStyle='#f4d2a8';cx.beginPath();cx.arc(sx+20,sy+15+b,10,0,Math.PI*2);cx.fill();cx.fillStyle='#4a2810';cx.beginPath();cx.arc(sx+20,sy+12+b,11,Math.PI,Math.PI*2);cx.fill();cx.fillRect(sx+10,sy+12+b,3,22);cx.fillRect(sx+27,sy+12+b,3,22);cx.fillStyle='#fd0';cx.beginPath();cx.moveTo(sx+12,sy+5+b);cx.lineTo(sx+15,sy-2+b);cx.lineTo(sx+18,sy+5+b);cx.lineTo(sx+20,sy-4+b);cx.lineTo(sx+22,sy+5+b);cx.lineTo(sx+25,sy-2+b);cx.lineTo(sx+28,sy+5+b);cx.closePath();cx.fill();cx.fillStyle='#f35';cx.beginPath();cx.arc(sx+20,sy+2+b,1.5,0,Math.PI*2);cx.fill();cx.fillStyle='#2a6a4a';cx.fillRect(sx+16,sy+15+b,2,2);cx.fillRect(sx+22,sy+15+b,2,2);cx.strokeStyle='#c44';cx.lineWidth=1;cx.beginPath();cx.arc(sx+20,sy+19+b,2,0,Math.PI);cx.stroke();cx.fillStyle='#fd0';cx.font='bold 14px Tahoma';cx.textAlign='center';cx.shadowColor='#fd0';cx.shadowBlur=8;cx.fillText('👑 سنا',sx+20,sy-12+b);cx.shadowBlur=0}
 
 let G=null,ltTimer=0,showLC=false,kissAn=false;
+let autoScrollInterval=null; // ✅ متغیر جدید برای کنترل auto scroll
+
+// ✅ تابع auto scroll برای صفحه پایان
+function startAutoScroll(){
+  const es=$('es');
+  if(!es)return;
+  
+  // ریست کردن scroll position
+  es.scrollTop=0;
+  
+  let scrollPos=0;
+  const stopHint=()=>{
+    const hint=$('scrollHint');
+    if(hint)hint.style.display='none';
+  };
+  
+  // شروع اسکرول خودکار با سرعت ملایم
+  autoScrollInterval=setInterval(()=>{
+    const maxScroll=es.scrollHeight-es.clientHeight;
+    if(scrollPos>=maxScroll){
+      clearInterval(autoScrollInterval);
+      autoScrollInterval=null;
+      stopHint();
+      return;
+    }
+    scrollPos+=1.5; // ✅ سرعت اسکرول (1.5 پیکسل در هر 40ms)
+    es.scrollTop=scrollPos;
+  },40);
+  
+  // ✅ متوقف کردن auto scroll وقتی کاربر خودش اسکرول کرد
+  const stopAutoScroll=()=>{
+    if(autoScrollInterval){
+      clearInterval(autoScrollInterval);
+      autoScrollInterval=null;
+      stopHint();
+    }
+  };
+  
+  es.addEventListener('touchstart',stopAutoScroll,{once:true,passive:true});
+  es.addEventListener('wheel',stopAutoScroll,{once:true,passive:true});
+  es.addEventListener('mousedown',stopAutoScroll,{once:true});
+}
 
 function startGame(){
   $('ov').classList.add('hid');$('hud').classList.remove('hid');$('testBtn').classList.remove('hid');
@@ -356,7 +397,12 @@ function winGame(){
   $('mf').classList.add('k');$('sf').classList.add('k');
   for(let i=0;i<20;i++)setTimeout(()=>{const h=document.createElement('div');h.innerHTML='💖';h.style.cssText=`position:absolute;font-size:${20+Math.random()*30}px;left:${25+Math.random()*50}%;top:${15+Math.random()*35}%;animation:hf ${1+Math.random()}s ease-out forwards;pointer-events:none`;document.querySelector('.cc').appendChild(h);setTimeout(()=>h.remove(),2000)},i*200);
   playWin();
-  setTimeout(()=>{$('es').classList.add('on');$('fs').textContent=G.score},3000);
+  setTimeout(()=>{
+    $('es').classList.add('on');
+    $('fs').textContent=G.score;
+    // ✅ شروع auto scroll بعد از نمایش صفحه پایان (با تأخیر برای لود شدن کامل محتوا)
+    setTimeout(startAutoScroll,1000);
+  },3000);
 }
 
 function loseGame(){
@@ -393,7 +439,6 @@ function loop(){
     }}
   }
 
-  // ✅ فقط شمارش دقیق - بدون fail-safe
   let aliveCount=0;
   for(const e of G.lv.en){if(e.alive)aliveCount++}
   if(aliveCount===0&&G.ln<3&&!showLC&&!G.lcDone)showLCMsg();
